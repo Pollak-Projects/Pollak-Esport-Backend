@@ -1,8 +1,7 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import authMiddleware from "./middleware/auth";
-import loginRouter from "./routes/login";
-import registerRouter from "./routes/register";
+import userRouter from "./routes/user";
 
 dotenv.config();
 
@@ -10,8 +9,8 @@ const app: Express = express();
 const port = process.env.PORT || 6969;
 app.use(express.json());
 
-app.use("/api", registerRouter);
-app.use("/api", loginRouter);
+app.use("/api/user", userRouter);
+app.use("/api",);
 
 app.get("/protected", authMiddleware, (req, res) => {
   res.send("This is a protected route");
