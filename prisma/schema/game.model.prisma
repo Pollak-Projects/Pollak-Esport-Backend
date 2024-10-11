@@ -1,0 +1,9 @@
+model Game {
+  id          String        @id @default(uuid())
+  date        DateTime
+  seedId      String
+  seed        Seed          @relation(fields: [seedId], references: [id])
+  teams       Team[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @default(now()) @updatedAt
+}
