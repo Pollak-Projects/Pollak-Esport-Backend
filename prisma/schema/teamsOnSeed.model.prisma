@@ -1,0 +1,10 @@
+model teamsOnSeed {
+    teamId    String
+    seedId    String
+    Team      Team     @relation(fields: [teamId], references: [id])
+    Seed      Seed     @relation(fields: [seedId], references: [id])
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@id([teamId, seedId])
+}

@@ -1,0 +1,10 @@
+model roundsOnGame {
+    roundId   String
+    gameId    String
+    Round     Round    @relation(fields: [roundId], references: [id])
+    Game      Game     @relation(fields: [gameId], references: [id])
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@id([roundId, gameId])
+}

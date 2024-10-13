@@ -1,32 +1,11 @@
 model Game {
-    id        String          @id @default(uuid())
-    name      String
-    createdAt DateTime        @default(now())
-    updatedAt DateTime        @updatedAt
-    variants  Variant[]
-    teams     TeamsInGame[]
-    standings GameStandings[]
-}
-
-model Variant {
-    id               String @id @default(uuid())
-    name             String
-    maxPerTeam       Int    @default(1)
-    maxPlayers       Int    @default(10)
-    minPlayers       Int    @default(2)
-    requiredForPrize Int    @default(10)
-    Game             Game?  @relation(fields: [gameId], references: [id])
-    gameId           String
-}
-
-model GameStandings {
-    game      Game     @relation(fields: [gameId], references: [id])
-    gameId    String
-    team      Team     @relation(fields: [teamId], references: [id])
-    teamId    String
-    points    Int      @default(0)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    @@id([gameId, teamId])
+    id                  String         @id @default(uuid())
+    name                String
+    createdAt           DateTime       @default(now())
+    updatedAt           DateTime       @updatedAt
+    playerCount         Int
+    playerPerTeam       Int
+    requiredPlayerCount Int
+    Round               Round[]
+    roundsOnGame        roundsOnGame[]
 }

@@ -1,0 +1,11 @@
+model Round {
+    id           String         @id @default(uuid())
+    number       Int
+    title        String
+    game         Game           @relation(fields: [gameId], references: [id])
+    gameId       String
+    seeds        Seed[]
+    createdAt    DateTime       @default(now())
+    updatedAt    DateTime       @updatedAt
+    roundsOnGame roundsOnGame[]
+}
